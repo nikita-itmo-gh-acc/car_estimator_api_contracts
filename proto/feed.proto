@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package feed;
+
+option go_package = "feed.v1";
+
+import "google/protobuf/timestamp.proto";
+
+service FeedService {
+    rpc ListFeed(ListFeedRequest) returns (ListFeedResponse);
+    rpc SearchListing(SearchListingRequest) returns (SearchListingResponse);
+    rpc GetListingDetails(GetListingDetailsRequest) returns (GetListingDetailsResponse);
+    rpc AddToFavorites(AddToFavoritesRequest) returns (AddToFavoritesResponse);
+}
+
+message CarListing {
+    string listing_id = 1;
+    string seller_id = 2;
+    string description = 3;
+    google.protobuf.Timestamp posted_at = 4;
+    string status =5;
+    string deal_type = 6;
+    double price = 7;
+    repeated string tags = 8;
+
+    string car_id = 9;
+    int32 mileage = 10;
+    int32 owners_count = 11;
+    int32 accidents_count = 12;
+    string condition = 13;
+    string color = 14;
+
+    string config_id = 15;
+    string engine_type = 16;
+    string engine_volume = 17;
+    int32 engine_power = 18;
+    int32 cylinders = 19;
+    string transmission = 20;
+    string drivetrain = 21;
+
+    string model_id = 22;
+    string model_name = 23;
+    string make = 24;
+    int32 year = 25;
+    string body_type = 26;
+    string generation = 27;
+    double weight_kg = 28;
+
+    string seller_name = 29;
+    double seller_rating = 31;
+    int32 seller_sales_count = 32;
+    bool seller_is_business = 33;
+
+}
+
+message PageRequest {
+    int32 page_number = 1;
+    int32 page_size = 2;
+}
+
+enum SortBy {
+    SORT_UNSPECIFIED = 0;
+    SORT_DATE_DESC = 1;
+    SORT_DATE_ASC = 2;
+    SORT_PRICE_DESC = 3;
+    SORT_PRICE_ASC = 4;
+    SORT_MILEAGE_DESC = 5;
+    SORT_MILEAGE_ASC = 6;
+}
+
+message PageResponseMetadat {
+    int32 total_items = 1;
+    int32 total_pages = 2;
+    int32 current_page = 3;
+}
+
+message ListFeedRequest {
+    PageRequest page = 1;
+    SortBy sort_by = 2;
+}
+
+message ListFeedResponse {
+    repeated CarListing listings = 1;
+    PageResponseMetadat page_metadata = 2;
+}
+
+message SearchListingRequest {
+    string query = 1;
+    PageRequest page = 2;
+    SortBy sort_by = 3;
+
+}
+
+message SearchListingResponse {
+    repeated CarListing listings = 1;
+    PageResponseMetadat page_metadata = 2;
+}
+
+message GetListingDetailsRequest {
+    string listing_id = 1;
+}
+
+message GetListingDetailsResponse {
+    CarListing listing = 1;
+}
+
+message AddToFavoritesRequest {
+    string user_id = 1;
+    string listing_id = 2;
+}
+
+message AddToFavoritesResponse {
+    bool success = 1;
+}
