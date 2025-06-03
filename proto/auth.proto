@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "auth.v1";
+
+service AuthService {
+    rpc Login(LoginRequest) returns (TokenResponse) {};
+    rpc Register(RegisterRequest) returns (RegisterResponse) {};
+    rpc Refresh(RefreshRequest) returns (TokenResponse) {};
+}
+
+message UUID {
+    string value = 1;
+}
+
+message TokenResponse {
+    string accessToken = 1;
+    int64 expiresIn = 2;
+}
+
+message LoginRequest {
+    string email = 1; 
+    string password = 2;
+}
+
+message RegisterResponse {
+    UUID userId = 1;
+}
+
+message RegisterRequest {
+    string fullname = 1;
+    string email = 2; 
+    string password = 3;
+    int64 birthdate = 4; 
+}
+
+message RefreshRequest {
+    string ip = 1;
+    string userAgent = 2;
+}
