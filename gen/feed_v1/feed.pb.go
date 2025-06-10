@@ -427,7 +427,7 @@ func (x *PageRequest) GetPageSize() int32 {
 	return 0
 }
 
-type PageResponseMetadat struct {
+type PageResponseMetadata struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TotalItems    int32                  `protobuf:"varint,1,opt,name=total_items,json=totalItems,proto3" json:"total_items,omitempty"`
 	TotalPages    int32                  `protobuf:"varint,2,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
@@ -436,20 +436,20 @@ type PageResponseMetadat struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PageResponseMetadat) Reset() {
-	*x = PageResponseMetadat{}
+func (x *PageResponseMetadata) Reset() {
+	*x = PageResponseMetadata{}
 	mi := &file_feed_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PageResponseMetadat) String() string {
+func (x *PageResponseMetadata) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PageResponseMetadat) ProtoMessage() {}
+func (*PageResponseMetadata) ProtoMessage() {}
 
-func (x *PageResponseMetadat) ProtoReflect() protoreflect.Message {
+func (x *PageResponseMetadata) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -461,26 +461,26 @@ func (x *PageResponseMetadat) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PageResponseMetadat.ProtoReflect.Descriptor instead.
-func (*PageResponseMetadat) Descriptor() ([]byte, []int) {
+// Deprecated: Use PageResponseMetadata.ProtoReflect.Descriptor instead.
+func (*PageResponseMetadata) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PageResponseMetadat) GetTotalItems() int32 {
+func (x *PageResponseMetadata) GetTotalItems() int32 {
 	if x != nil {
 		return x.TotalItems
 	}
 	return 0
 }
 
-func (x *PageResponseMetadat) GetTotalPages() int32 {
+func (x *PageResponseMetadata) GetTotalPages() int32 {
 	if x != nil {
 		return x.TotalPages
 	}
 	return 0
 }
 
-func (x *PageResponseMetadat) GetCurrentPage() int32 {
+func (x *PageResponseMetadata) GetCurrentPage() int32 {
 	if x != nil {
 		return x.CurrentPage
 	}
@@ -542,7 +542,7 @@ func (x *ListFeedRequest) GetSortBy() SortBy {
 type ListFeedResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Listings      []*CarListing          `protobuf:"bytes,1,rep,name=listings,proto3" json:"listings,omitempty"`
-	PageMetadata  *PageResponseMetadat   `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
+	PageMetadata  *PageResponseMetadata  `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -584,7 +584,7 @@ func (x *ListFeedResponse) GetListings() []*CarListing {
 	return nil
 }
 
-func (x *ListFeedResponse) GetPageMetadata() *PageResponseMetadat {
+func (x *ListFeedResponse) GetPageMetadata() *PageResponseMetadata {
 	if x != nil {
 		return x.PageMetadata
 	}
@@ -654,7 +654,7 @@ func (x *SearchListingRequest) GetSortBy() SortBy {
 type SearchListingResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Listings      []*CarListing          `protobuf:"bytes,1,rep,name=listings,proto3" json:"listings,omitempty"`
-	PageMetadata  *PageResponseMetadat   `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
+	PageMetadata  *PageResponseMetadata  `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -696,7 +696,7 @@ func (x *SearchListingResponse) GetListings() []*CarListing {
 	return nil
 }
 
-func (x *SearchListingResponse) GetPageMetadata() *PageResponseMetadat {
+func (x *SearchListingResponse) GetPageMetadata() *PageResponseMetadata {
 	if x != nil {
 		return x.PageMetadata
 	}
@@ -939,8 +939,8 @@ const file_feed_proto_rawDesc = "" +
 	"\vPageRequest\x12\x1f\n" +
 	"\vpage_number\x18\x01 \x01(\x05R\n" +
 	"pageNumber\x12\x1b\n" +
-	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\"z\n" +
-	"\x13PageResponseMetadat\x12\x1f\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\"{\n" +
+	"\x14PageResponseMetadata\x12\x1f\n" +
 	"\vtotal_items\x18\x01 \x01(\x05R\n" +
 	"totalItems\x12\x1f\n" +
 	"\vtotal_pages\x18\x02 \x01(\x05R\n" +
@@ -948,17 +948,17 @@ const file_feed_proto_rawDesc = "" +
 	"\fcurrent_page\x18\x03 \x01(\x05R\vcurrentPage\"_\n" +
 	"\x0fListFeedRequest\x12%\n" +
 	"\x04page\x18\x01 \x01(\v2\x11.feed.PageRequestR\x04page\x12%\n" +
-	"\asort_by\x18\x02 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x80\x01\n" +
+	"\asort_by\x18\x02 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x81\x01\n" +
 	"\x10ListFeedResponse\x12,\n" +
-	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12>\n" +
-	"\rpage_metadata\x18\x02 \x01(\v2\x19.feed.PageResponseMetadatR\fpageMetadata\"z\n" +
+	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12?\n" +
+	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"z\n" +
 	"\x14SearchListingRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12%\n" +
 	"\x04page\x18\x02 \x01(\v2\x11.feed.PageRequestR\x04page\x12%\n" +
-	"\asort_by\x18\x03 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x85\x01\n" +
+	"\asort_by\x18\x03 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x86\x01\n" +
 	"\x15SearchListingResponse\x12,\n" +
-	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12>\n" +
-	"\rpage_metadata\x18\x02 \x01(\v2\x19.feed.PageResponseMetadatR\fpageMetadata\"9\n" +
+	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12?\n" +
+	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"9\n" +
 	"\x18GetListingDetailsRequest\x12\x1d\n" +
 	"\n" +
 	"listing_id\x18\x01 \x01(\tR\tlistingId\"G\n" +
@@ -1002,7 +1002,7 @@ var file_feed_proto_goTypes = []any{
 	(SortBy)(0),                       // 0: feed.SortBy
 	(*CarListing)(nil),                // 1: feed.CarListing
 	(*PageRequest)(nil),               // 2: feed.PageRequest
-	(*PageResponseMetadat)(nil),       // 3: feed.PageResponseMetadat
+	(*PageResponseMetadata)(nil),      // 3: feed.PageResponseMetadata
 	(*ListFeedRequest)(nil),           // 4: feed.ListFeedRequest
 	(*ListFeedResponse)(nil),          // 5: feed.ListFeedResponse
 	(*SearchListingRequest)(nil),      // 6: feed.SearchListingRequest
@@ -1018,11 +1018,11 @@ var file_feed_proto_depIdxs = []int32{
 	2,  // 1: feed.ListFeedRequest.page:type_name -> feed.PageRequest
 	0,  // 2: feed.ListFeedRequest.sort_by:type_name -> feed.SortBy
 	1,  // 3: feed.ListFeedResponse.listings:type_name -> feed.CarListing
-	3,  // 4: feed.ListFeedResponse.page_metadata:type_name -> feed.PageResponseMetadat
+	3,  // 4: feed.ListFeedResponse.page_metadata:type_name -> feed.PageResponseMetadata
 	2,  // 5: feed.SearchListingRequest.page:type_name -> feed.PageRequest
 	0,  // 6: feed.SearchListingRequest.sort_by:type_name -> feed.SortBy
 	1,  // 7: feed.SearchListingResponse.listings:type_name -> feed.CarListing
-	3,  // 8: feed.SearchListingResponse.page_metadata:type_name -> feed.PageResponseMetadat
+	3,  // 8: feed.SearchListingResponse.page_metadata:type_name -> feed.PageResponseMetadata
 	1,  // 9: feed.GetListingDetailsResponse.listing:type_name -> feed.CarListing
 	4,  // 10: feed.FeedService.ListFeed:input_type -> feed.ListFeedRequest
 	6,  // 11: feed.FeedService.SearchListing:input_type -> feed.SearchListingRequest

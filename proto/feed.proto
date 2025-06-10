@@ -68,7 +68,7 @@ enum SortBy {
     SORT_MILEAGE_ASC = 6;
 }
 
-message PageResponseMetadat {
+message PageResponseMetadata {
     int32 total_items = 1;
     int32 total_pages = 2;
     int32 current_page = 3;
@@ -81,7 +81,7 @@ message ListFeedRequest {
 
 message ListFeedResponse {
     repeated CarListing listings = 1;
-    PageResponseMetadat page_metadata = 2;
+    PageResponseMetadata page_metadata = 2;
 }
 
 message SearchListingRequest {
@@ -93,7 +93,7 @@ message SearchListingRequest {
 
 message SearchListingResponse {
     repeated CarListing listings = 1;
-    PageResponseMetadat page_metadata = 2;
+    PageResponseMetadata page_metadata = 2;
 }
 
 message GetListingDetailsRequest {
