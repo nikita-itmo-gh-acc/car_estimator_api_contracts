@@ -7,6 +7,7 @@
 package feed_v1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -487,7 +488,7 @@ func (x *PageResponseMetadata) GetCurrentPage() int32 {
 	return 0
 }
 
-type ListFeedRequest struct {
+type ListListingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          *PageRequest           `protobuf:"bytes,1,opt,name=page,proto3" json:"page,omitempty"`
 	SortBy        SortBy                 `protobuf:"varint,2,opt,name=sort_by,json=sortBy,proto3,enum=feed.SortBy" json:"sort_by,omitempty"`
@@ -495,20 +496,20 @@ type ListFeedRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListFeedRequest) Reset() {
-	*x = ListFeedRequest{}
+func (x *ListListingsRequest) Reset() {
+	*x = ListListingsRequest{}
 	mi := &file_feed_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListFeedRequest) String() string {
+func (x *ListListingsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFeedRequest) ProtoMessage() {}
+func (*ListListingsRequest) ProtoMessage() {}
 
-func (x *ListFeedRequest) ProtoReflect() protoreflect.Message {
+func (x *ListListingsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -520,26 +521,26 @@ func (x *ListFeedRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListFeedRequest.ProtoReflect.Descriptor instead.
-func (*ListFeedRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListListingsRequest.ProtoReflect.Descriptor instead.
+func (*ListListingsRequest) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListFeedRequest) GetPage() *PageRequest {
+func (x *ListListingsRequest) GetPage() *PageRequest {
 	if x != nil {
 		return x.Page
 	}
 	return nil
 }
 
-func (x *ListFeedRequest) GetSortBy() SortBy {
+func (x *ListListingsRequest) GetSortBy() SortBy {
 	if x != nil {
 		return x.SortBy
 	}
 	return SortBy_SORT_UNSPECIFIED
 }
 
-type ListFeedResponse struct {
+type ListListingsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Listings      []*CarListing          `protobuf:"bytes,1,rep,name=listings,proto3" json:"listings,omitempty"`
 	PageMetadata  *PageResponseMetadata  `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
@@ -547,20 +548,20 @@ type ListFeedResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListFeedResponse) Reset() {
-	*x = ListFeedResponse{}
+func (x *ListListingsResponse) Reset() {
+	*x = ListListingsResponse{}
 	mi := &file_feed_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListFeedResponse) String() string {
+func (x *ListListingsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListFeedResponse) ProtoMessage() {}
+func (*ListListingsResponse) ProtoMessage() {}
 
-func (x *ListFeedResponse) ProtoReflect() protoreflect.Message {
+func (x *ListListingsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -572,26 +573,26 @@ func (x *ListFeedResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListFeedResponse.ProtoReflect.Descriptor instead.
-func (*ListFeedResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListListingsResponse.ProtoReflect.Descriptor instead.
+func (*ListListingsResponse) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListFeedResponse) GetListings() []*CarListing {
+func (x *ListListingsResponse) GetListings() []*CarListing {
 	if x != nil {
 		return x.Listings
 	}
 	return nil
 }
 
-func (x *ListFeedResponse) GetPageMetadata() *PageResponseMetadata {
+func (x *ListListingsResponse) GetPageMetadata() *PageResponseMetadata {
 	if x != nil {
 		return x.PageMetadata
 	}
 	return nil
 }
 
-type SearchListingRequest struct {
+type SearchListingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Query         string                 `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	Page          *PageRequest           `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
@@ -600,20 +601,20 @@ type SearchListingRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SearchListingRequest) Reset() {
-	*x = SearchListingRequest{}
+func (x *SearchListingsRequest) Reset() {
+	*x = SearchListingsRequest{}
 	mi := &file_feed_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SearchListingRequest) String() string {
+func (x *SearchListingsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SearchListingRequest) ProtoMessage() {}
+func (*SearchListingsRequest) ProtoMessage() {}
 
-func (x *SearchListingRequest) ProtoReflect() protoreflect.Message {
+func (x *SearchListingsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -625,33 +626,33 @@ func (x *SearchListingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SearchListingRequest.ProtoReflect.Descriptor instead.
-func (*SearchListingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SearchListingsRequest.ProtoReflect.Descriptor instead.
+func (*SearchListingsRequest) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *SearchListingRequest) GetQuery() string {
+func (x *SearchListingsRequest) GetQuery() string {
 	if x != nil {
 		return x.Query
 	}
 	return ""
 }
 
-func (x *SearchListingRequest) GetPage() *PageRequest {
+func (x *SearchListingsRequest) GetPage() *PageRequest {
 	if x != nil {
 		return x.Page
 	}
 	return nil
 }
 
-func (x *SearchListingRequest) GetSortBy() SortBy {
+func (x *SearchListingsRequest) GetSortBy() SortBy {
 	if x != nil {
 		return x.SortBy
 	}
 	return SortBy_SORT_UNSPECIFIED
 }
 
-type SearchListingResponse struct {
+type SearchListingsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Listings      []*CarListing          `protobuf:"bytes,1,rep,name=listings,proto3" json:"listings,omitempty"`
 	PageMetadata  *PageResponseMetadata  `protobuf:"bytes,2,opt,name=page_metadata,json=pageMetadata,proto3" json:"page_metadata,omitempty"`
@@ -659,20 +660,20 @@ type SearchListingResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SearchListingResponse) Reset() {
-	*x = SearchListingResponse{}
+func (x *SearchListingsResponse) Reset() {
+	*x = SearchListingsResponse{}
 	mi := &file_feed_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SearchListingResponse) String() string {
+func (x *SearchListingsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SearchListingResponse) ProtoMessage() {}
+func (*SearchListingsResponse) ProtoMessage() {}
 
-func (x *SearchListingResponse) ProtoReflect() protoreflect.Message {
+func (x *SearchListingsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -684,46 +685,46 @@ func (x *SearchListingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SearchListingResponse.ProtoReflect.Descriptor instead.
-func (*SearchListingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SearchListingsResponse.ProtoReflect.Descriptor instead.
+func (*SearchListingsResponse) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *SearchListingResponse) GetListings() []*CarListing {
+func (x *SearchListingsResponse) GetListings() []*CarListing {
 	if x != nil {
 		return x.Listings
 	}
 	return nil
 }
 
-func (x *SearchListingResponse) GetPageMetadata() *PageResponseMetadata {
+func (x *SearchListingsResponse) GetPageMetadata() *PageResponseMetadata {
 	if x != nil {
 		return x.PageMetadata
 	}
 	return nil
 }
 
-type GetListingDetailsRequest struct {
+type GetListingRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ListingId     string                 `protobuf:"bytes,1,opt,name=listing_id,json=listingId,proto3" json:"listing_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetListingDetailsRequest) Reset() {
-	*x = GetListingDetailsRequest{}
+func (x *GetListingRequest) Reset() {
+	*x = GetListingRequest{}
 	mi := &file_feed_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetListingDetailsRequest) String() string {
+func (x *GetListingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetListingDetailsRequest) ProtoMessage() {}
+func (*GetListingRequest) ProtoMessage() {}
 
-func (x *GetListingDetailsRequest) ProtoReflect() protoreflect.Message {
+func (x *GetListingRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -735,39 +736,39 @@ func (x *GetListingDetailsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetListingDetailsRequest.ProtoReflect.Descriptor instead.
-func (*GetListingDetailsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetListingRequest.ProtoReflect.Descriptor instead.
+func (*GetListingRequest) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GetListingDetailsRequest) GetListingId() string {
+func (x *GetListingRequest) GetListingId() string {
 	if x != nil {
 		return x.ListingId
 	}
 	return ""
 }
 
-type GetListingDetailsResponse struct {
+type GetListingResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Listing       *CarListing            `protobuf:"bytes,1,opt,name=listing,proto3" json:"listing,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetListingDetailsResponse) Reset() {
-	*x = GetListingDetailsResponse{}
+func (x *GetListingResponse) Reset() {
+	*x = GetListingResponse{}
 	mi := &file_feed_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetListingDetailsResponse) String() string {
+func (x *GetListingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetListingDetailsResponse) ProtoMessage() {}
+func (*GetListingResponse) ProtoMessage() {}
 
-func (x *GetListingDetailsResponse) ProtoReflect() protoreflect.Message {
+func (x *GetListingResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_feed_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -779,16 +780,280 @@ func (x *GetListingDetailsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetListingDetailsResponse.ProtoReflect.Descriptor instead.
-func (*GetListingDetailsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetListingResponse.ProtoReflect.Descriptor instead.
+func (*GetListingResponse) Descriptor() ([]byte, []int) {
 	return file_feed_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetListingDetailsResponse) GetListing() *CarListing {
+func (x *GetListingResponse) GetListing() *CarListing {
 	if x != nil {
 		return x.Listing
 	}
 	return nil
+}
+
+type CreateListingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Listing       *CarListing            `protobuf:"bytes,1,opt,name=listing,proto3" json:"listing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateListingRequest) Reset() {
+	*x = CreateListingRequest{}
+	mi := &file_feed_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateListingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateListingRequest) ProtoMessage() {}
+
+func (x *CreateListingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateListingRequest.ProtoReflect.Descriptor instead.
+func (*CreateListingRequest) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CreateListingRequest) GetListing() *CarListing {
+	if x != nil {
+		return x.Listing
+	}
+	return nil
+}
+
+type CreateListingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Listing       *CarListing            `protobuf:"bytes,1,opt,name=listing,proto3" json:"listing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateListingResponse) Reset() {
+	*x = CreateListingResponse{}
+	mi := &file_feed_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateListingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateListingResponse) ProtoMessage() {}
+
+func (x *CreateListingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateListingResponse.ProtoReflect.Descriptor instead.
+func (*CreateListingResponse) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CreateListingResponse) GetListing() *CarListing {
+	if x != nil {
+		return x.Listing
+	}
+	return nil
+}
+
+type UpdateListingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Listing       *CarListing            `protobuf:"bytes,1,opt,name=listing,proto3" json:"listing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateListingRequest) Reset() {
+	*x = UpdateListingRequest{}
+	mi := &file_feed_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateListingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateListingRequest) ProtoMessage() {}
+
+func (x *UpdateListingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateListingRequest.ProtoReflect.Descriptor instead.
+func (*UpdateListingRequest) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateListingRequest) GetListing() *CarListing {
+	if x != nil {
+		return x.Listing
+	}
+	return nil
+}
+
+type UpdateListingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Listing       *CarListing            `protobuf:"bytes,1,opt,name=listing,proto3" json:"listing,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateListingResponse) Reset() {
+	*x = UpdateListingResponse{}
+	mi := &file_feed_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateListingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateListingResponse) ProtoMessage() {}
+
+func (x *UpdateListingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateListingResponse.ProtoReflect.Descriptor instead.
+func (*UpdateListingResponse) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UpdateListingResponse) GetListing() *CarListing {
+	if x != nil {
+		return x.Listing
+	}
+	return nil
+}
+
+type DeleteListingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ListingId     string                 `protobuf:"bytes,1,opt,name=listing_id,json=listingId,proto3" json:"listing_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteListingRequest) Reset() {
+	*x = DeleteListingRequest{}
+	mi := &file_feed_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteListingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteListingRequest) ProtoMessage() {}
+
+func (x *DeleteListingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteListingRequest.ProtoReflect.Descriptor instead.
+func (*DeleteListingRequest) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *DeleteListingRequest) GetListingId() string {
+	if x != nil {
+		return x.ListingId
+	}
+	return ""
+}
+
+type DeleteListingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteListingResponse) Reset() {
+	*x = DeleteListingResponse{}
+	mi := &file_feed_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteListingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteListingResponse) ProtoMessage() {}
+
+func (x *DeleteListingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_feed_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteListingResponse.ProtoReflect.Descriptor instead.
+func (*DeleteListingResponse) Descriptor() ([]byte, []int) {
+	return file_feed_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *DeleteListingResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 type AddToFavoritesRequest struct {
@@ -801,7 +1066,7 @@ type AddToFavoritesRequest struct {
 
 func (x *AddToFavoritesRequest) Reset() {
 	*x = AddToFavoritesRequest{}
-	mi := &file_feed_proto_msgTypes[9]
+	mi := &file_feed_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -813,7 +1078,7 @@ func (x *AddToFavoritesRequest) String() string {
 func (*AddToFavoritesRequest) ProtoMessage() {}
 
 func (x *AddToFavoritesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_feed_proto_msgTypes[9]
+	mi := &file_feed_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -826,7 +1091,7 @@ func (x *AddToFavoritesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddToFavoritesRequest.ProtoReflect.Descriptor instead.
 func (*AddToFavoritesRequest) Descriptor() ([]byte, []int) {
-	return file_feed_proto_rawDescGZIP(), []int{9}
+	return file_feed_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AddToFavoritesRequest) GetUserId() string {
@@ -852,7 +1117,7 @@ type AddToFavoritesResponse struct {
 
 func (x *AddToFavoritesResponse) Reset() {
 	*x = AddToFavoritesResponse{}
-	mi := &file_feed_proto_msgTypes[10]
+	mi := &file_feed_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -864,7 +1129,7 @@ func (x *AddToFavoritesResponse) String() string {
 func (*AddToFavoritesResponse) ProtoMessage() {}
 
 func (x *AddToFavoritesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_feed_proto_msgTypes[10]
+	mi := &file_feed_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -877,7 +1142,7 @@ func (x *AddToFavoritesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddToFavoritesResponse.ProtoReflect.Descriptor instead.
 func (*AddToFavoritesResponse) Descriptor() ([]byte, []int) {
-	return file_feed_proto_rawDescGZIP(), []int{10}
+	return file_feed_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddToFavoritesResponse) GetSuccess() bool {
@@ -892,7 +1157,7 @@ var File_feed_proto protoreflect.FileDescriptor
 const file_feed_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"feed.proto\x12\x04feed\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf9\a\n" +
+	"feed.proto\x12\x04feed\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"\xf9\a\n" +
 	"\n" +
 	"CarListing\x12\x1d\n" +
 	"\n" +
@@ -945,25 +1210,38 @@ const file_feed_proto_rawDesc = "" +
 	"totalItems\x12\x1f\n" +
 	"\vtotal_pages\x18\x02 \x01(\x05R\n" +
 	"totalPages\x12!\n" +
-	"\fcurrent_page\x18\x03 \x01(\x05R\vcurrentPage\"_\n" +
-	"\x0fListFeedRequest\x12%\n" +
+	"\fcurrent_page\x18\x03 \x01(\x05R\vcurrentPage\"c\n" +
+	"\x13ListListingsRequest\x12%\n" +
 	"\x04page\x18\x01 \x01(\v2\x11.feed.PageRequestR\x04page\x12%\n" +
-	"\asort_by\x18\x02 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x81\x01\n" +
-	"\x10ListFeedResponse\x12,\n" +
+	"\asort_by\x18\x02 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x85\x01\n" +
+	"\x14ListListingsResponse\x12,\n" +
 	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12?\n" +
-	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"z\n" +
-	"\x14SearchListingRequest\x12\x14\n" +
+	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"{\n" +
+	"\x15SearchListingsRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12%\n" +
 	"\x04page\x18\x02 \x01(\v2\x11.feed.PageRequestR\x04page\x12%\n" +
-	"\asort_by\x18\x03 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x86\x01\n" +
-	"\x15SearchListingResponse\x12,\n" +
+	"\asort_by\x18\x03 \x01(\x0e2\f.feed.SortByR\x06sortBy\"\x87\x01\n" +
+	"\x16SearchListingsResponse\x12,\n" +
 	"\blistings\x18\x01 \x03(\v2\x10.feed.CarListingR\blistings\x12?\n" +
-	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"9\n" +
-	"\x18GetListingDetailsRequest\x12\x1d\n" +
+	"\rpage_metadata\x18\x02 \x01(\v2\x1a.feed.PageResponseMetadataR\fpageMetadata\"2\n" +
+	"\x11GetListingRequest\x12\x1d\n" +
 	"\n" +
-	"listing_id\x18\x01 \x01(\tR\tlistingId\"G\n" +
-	"\x19GetListingDetailsResponse\x12*\n" +
-	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"O\n" +
+	"listing_id\x18\x01 \x01(\tR\tlistingId\"@\n" +
+	"\x12GetListingResponse\x12*\n" +
+	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"B\n" +
+	"\x14CreateListingRequest\x12*\n" +
+	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"C\n" +
+	"\x15CreateListingResponse\x12*\n" +
+	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"B\n" +
+	"\x14UpdateListingRequest\x12*\n" +
+	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"C\n" +
+	"\x15UpdateListingResponse\x12*\n" +
+	"\alisting\x18\x01 \x01(\v2\x10.feed.CarListingR\alisting\"5\n" +
+	"\x14DeleteListingRequest\x12\x1d\n" +
+	"\n" +
+	"listing_id\x18\x01 \x01(\tR\tlistingId\"1\n" +
+	"\x15DeleteListingResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"O\n" +
 	"\x15AddToFavoritesRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
 	"\n" +
@@ -977,12 +1255,16 @@ const file_feed_proto_rawDesc = "" +
 	"\x0fSORT_PRICE_DESC\x10\x03\x12\x12\n" +
 	"\x0eSORT_PRICE_ASC\x10\x04\x12\x15\n" +
 	"\x11SORT_MILEAGE_DESC\x10\x05\x12\x14\n" +
-	"\x10SORT_MILEAGE_ASC\x10\x062\xb5\x02\n" +
-	"\vFeedService\x129\n" +
-	"\bListFeed\x12\x15.feed.ListFeedRequest\x1a\x16.feed.ListFeedResponse\x12H\n" +
-	"\rSearchListing\x12\x1a.feed.SearchListingRequest\x1a\x1b.feed.SearchListingResponse\x12T\n" +
-	"\x11GetListingDetails\x12\x1e.feed.GetListingDetailsRequest\x1a\x1f.feed.GetListingDetailsResponse\x12K\n" +
-	"\x0eAddToFavorites\x12\x1b.feed.AddToFavoritesRequest\x1a\x1c.feed.AddToFavoritesResponseB\tZ\afeed.v1b\x06proto3"
+	"\x10SORT_MILEAGE_ASC\x10\x062\x93\x06\n" +
+	"\vFeedService\x12[\n" +
+	"\fListListings\x12\x19.feed.ListListingsRequest\x1a\x1a.feed.ListListingsResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/listings\x12b\n" +
+	"\n" +
+	"GetListing\x12\x17.feed.GetListingRequest\x1a\x18.feed.GetListingResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/listings/{listing_id}\x12x\n" +
+	"\x0eSearchListings\x12\x1b.feed.SearchListingsRequest\x1a\x1c.feed.SearchListingsResponse\"+\x82\xd3\xe4\x93\x02%Z\x0e\x12\f/v1/listings\x12\x13/v1/listings:search\x12g\n" +
+	"\rCreateListing\x12\x1a.feed.CreateListingRequest\x1a\x1b.feed.CreateListingResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\alisting\"\f/v1/listings\x12|\n" +
+	"\rUpdateListing\x12\x1a.feed.UpdateListingRequest\x1a\x1b.feed.UpdateListingResponse\"2\x82\xd3\xe4\x93\x02,:\alisting\x1a!/v1/listings/{listing.listing_id}\x12k\n" +
+	"\rDeleteListing\x12\x1a.feed.DeleteListingRequest\x1a\x1b.feed.DeleteListingResponse\"!\x82\xd3\xe4\x93\x02\x1b*\x19/v1/listings/{listing_id}\x12u\n" +
+	"\x0eAddToFavorites\x12\x1b.feed.AddToFavoritesRequest\x1a\x1c.feed.AddToFavoritesResponse\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/v1/users/{user_id}/favoritesB\tZ\afeed.v1b\x06proto3"
 
 var (
 	file_feed_proto_rawDescOnce sync.Once
@@ -997,46 +1279,62 @@ func file_feed_proto_rawDescGZIP() []byte {
 }
 
 var file_feed_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_feed_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_feed_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_feed_proto_goTypes = []any{
-	(SortBy)(0),                       // 0: feed.SortBy
-	(*CarListing)(nil),                // 1: feed.CarListing
-	(*PageRequest)(nil),               // 2: feed.PageRequest
-	(*PageResponseMetadata)(nil),      // 3: feed.PageResponseMetadata
-	(*ListFeedRequest)(nil),           // 4: feed.ListFeedRequest
-	(*ListFeedResponse)(nil),          // 5: feed.ListFeedResponse
-	(*SearchListingRequest)(nil),      // 6: feed.SearchListingRequest
-	(*SearchListingResponse)(nil),     // 7: feed.SearchListingResponse
-	(*GetListingDetailsRequest)(nil),  // 8: feed.GetListingDetailsRequest
-	(*GetListingDetailsResponse)(nil), // 9: feed.GetListingDetailsResponse
-	(*AddToFavoritesRequest)(nil),     // 10: feed.AddToFavoritesRequest
-	(*AddToFavoritesResponse)(nil),    // 11: feed.AddToFavoritesResponse
-	(*timestamppb.Timestamp)(nil),     // 12: google.protobuf.Timestamp
+	(SortBy)(0),                    // 0: feed.SortBy
+	(*CarListing)(nil),             // 1: feed.CarListing
+	(*PageRequest)(nil),            // 2: feed.PageRequest
+	(*PageResponseMetadata)(nil),   // 3: feed.PageResponseMetadata
+	(*ListListingsRequest)(nil),    // 4: feed.ListListingsRequest
+	(*ListListingsResponse)(nil),   // 5: feed.ListListingsResponse
+	(*SearchListingsRequest)(nil),  // 6: feed.SearchListingsRequest
+	(*SearchListingsResponse)(nil), // 7: feed.SearchListingsResponse
+	(*GetListingRequest)(nil),      // 8: feed.GetListingRequest
+	(*GetListingResponse)(nil),     // 9: feed.GetListingResponse
+	(*CreateListingRequest)(nil),   // 10: feed.CreateListingRequest
+	(*CreateListingResponse)(nil),  // 11: feed.CreateListingResponse
+	(*UpdateListingRequest)(nil),   // 12: feed.UpdateListingRequest
+	(*UpdateListingResponse)(nil),  // 13: feed.UpdateListingResponse
+	(*DeleteListingRequest)(nil),   // 14: feed.DeleteListingRequest
+	(*DeleteListingResponse)(nil),  // 15: feed.DeleteListingResponse
+	(*AddToFavoritesRequest)(nil),  // 16: feed.AddToFavoritesRequest
+	(*AddToFavoritesResponse)(nil), // 17: feed.AddToFavoritesResponse
+	(*timestamppb.Timestamp)(nil),  // 18: google.protobuf.Timestamp
 }
 var file_feed_proto_depIdxs = []int32{
-	12, // 0: feed.CarListing.posted_at:type_name -> google.protobuf.Timestamp
-	2,  // 1: feed.ListFeedRequest.page:type_name -> feed.PageRequest
-	0,  // 2: feed.ListFeedRequest.sort_by:type_name -> feed.SortBy
-	1,  // 3: feed.ListFeedResponse.listings:type_name -> feed.CarListing
-	3,  // 4: feed.ListFeedResponse.page_metadata:type_name -> feed.PageResponseMetadata
-	2,  // 5: feed.SearchListingRequest.page:type_name -> feed.PageRequest
-	0,  // 6: feed.SearchListingRequest.sort_by:type_name -> feed.SortBy
-	1,  // 7: feed.SearchListingResponse.listings:type_name -> feed.CarListing
-	3,  // 8: feed.SearchListingResponse.page_metadata:type_name -> feed.PageResponseMetadata
-	1,  // 9: feed.GetListingDetailsResponse.listing:type_name -> feed.CarListing
-	4,  // 10: feed.FeedService.ListFeed:input_type -> feed.ListFeedRequest
-	6,  // 11: feed.FeedService.SearchListing:input_type -> feed.SearchListingRequest
-	8,  // 12: feed.FeedService.GetListingDetails:input_type -> feed.GetListingDetailsRequest
-	10, // 13: feed.FeedService.AddToFavorites:input_type -> feed.AddToFavoritesRequest
-	5,  // 14: feed.FeedService.ListFeed:output_type -> feed.ListFeedResponse
-	7,  // 15: feed.FeedService.SearchListing:output_type -> feed.SearchListingResponse
-	9,  // 16: feed.FeedService.GetListingDetails:output_type -> feed.GetListingDetailsResponse
-	11, // 17: feed.FeedService.AddToFavorites:output_type -> feed.AddToFavoritesResponse
-	14, // [14:18] is the sub-list for method output_type
-	10, // [10:14] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	18, // 0: feed.CarListing.posted_at:type_name -> google.protobuf.Timestamp
+	2,  // 1: feed.ListListingsRequest.page:type_name -> feed.PageRequest
+	0,  // 2: feed.ListListingsRequest.sort_by:type_name -> feed.SortBy
+	1,  // 3: feed.ListListingsResponse.listings:type_name -> feed.CarListing
+	3,  // 4: feed.ListListingsResponse.page_metadata:type_name -> feed.PageResponseMetadata
+	2,  // 5: feed.SearchListingsRequest.page:type_name -> feed.PageRequest
+	0,  // 6: feed.SearchListingsRequest.sort_by:type_name -> feed.SortBy
+	1,  // 7: feed.SearchListingsResponse.listings:type_name -> feed.CarListing
+	3,  // 8: feed.SearchListingsResponse.page_metadata:type_name -> feed.PageResponseMetadata
+	1,  // 9: feed.GetListingResponse.listing:type_name -> feed.CarListing
+	1,  // 10: feed.CreateListingRequest.listing:type_name -> feed.CarListing
+	1,  // 11: feed.CreateListingResponse.listing:type_name -> feed.CarListing
+	1,  // 12: feed.UpdateListingRequest.listing:type_name -> feed.CarListing
+	1,  // 13: feed.UpdateListingResponse.listing:type_name -> feed.CarListing
+	4,  // 14: feed.FeedService.ListListings:input_type -> feed.ListListingsRequest
+	8,  // 15: feed.FeedService.GetListing:input_type -> feed.GetListingRequest
+	6,  // 16: feed.FeedService.SearchListings:input_type -> feed.SearchListingsRequest
+	10, // 17: feed.FeedService.CreateListing:input_type -> feed.CreateListingRequest
+	12, // 18: feed.FeedService.UpdateListing:input_type -> feed.UpdateListingRequest
+	14, // 19: feed.FeedService.DeleteListing:input_type -> feed.DeleteListingRequest
+	16, // 20: feed.FeedService.AddToFavorites:input_type -> feed.AddToFavoritesRequest
+	5,  // 21: feed.FeedService.ListListings:output_type -> feed.ListListingsResponse
+	9,  // 22: feed.FeedService.GetListing:output_type -> feed.GetListingResponse
+	7,  // 23: feed.FeedService.SearchListings:output_type -> feed.SearchListingsResponse
+	11, // 24: feed.FeedService.CreateListing:output_type -> feed.CreateListingResponse
+	13, // 25: feed.FeedService.UpdateListing:output_type -> feed.UpdateListingResponse
+	15, // 26: feed.FeedService.DeleteListing:output_type -> feed.DeleteListingResponse
+	17, // 27: feed.FeedService.AddToFavorites:output_type -> feed.AddToFavoritesResponse
+	21, // [21:28] is the sub-list for method output_type
+	14, // [14:21] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_feed_proto_init() }
@@ -1050,7 +1348,7 @@ func file_feed_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_feed_proto_rawDesc), len(file_feed_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   11,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

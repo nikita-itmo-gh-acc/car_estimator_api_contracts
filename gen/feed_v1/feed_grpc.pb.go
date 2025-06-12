@@ -19,19 +19,25 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FeedService_ListFeed_FullMethodName          = "/feed.FeedService/ListFeed"
-	FeedService_SearchListing_FullMethodName     = "/feed.FeedService/SearchListing"
-	FeedService_GetListingDetails_FullMethodName = "/feed.FeedService/GetListingDetails"
-	FeedService_AddToFavorites_FullMethodName    = "/feed.FeedService/AddToFavorites"
+	FeedService_ListListings_FullMethodName   = "/feed.FeedService/ListListings"
+	FeedService_GetListing_FullMethodName     = "/feed.FeedService/GetListing"
+	FeedService_SearchListings_FullMethodName = "/feed.FeedService/SearchListings"
+	FeedService_CreateListing_FullMethodName  = "/feed.FeedService/CreateListing"
+	FeedService_UpdateListing_FullMethodName  = "/feed.FeedService/UpdateListing"
+	FeedService_DeleteListing_FullMethodName  = "/feed.FeedService/DeleteListing"
+	FeedService_AddToFavorites_FullMethodName = "/feed.FeedService/AddToFavorites"
 )
 
 // FeedServiceClient is the client API for FeedService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FeedServiceClient interface {
-	ListFeed(ctx context.Context, in *ListFeedRequest, opts ...grpc.CallOption) (*ListFeedResponse, error)
-	SearchListing(ctx context.Context, in *SearchListingRequest, opts ...grpc.CallOption) (*SearchListingResponse, error)
-	GetListingDetails(ctx context.Context, in *GetListingDetailsRequest, opts ...grpc.CallOption) (*GetListingDetailsResponse, error)
+	ListListings(ctx context.Context, in *ListListingsRequest, opts ...grpc.CallOption) (*ListListingsResponse, error)
+	GetListing(ctx context.Context, in *GetListingRequest, opts ...grpc.CallOption) (*GetListingResponse, error)
+	SearchListings(ctx context.Context, in *SearchListingsRequest, opts ...grpc.CallOption) (*SearchListingsResponse, error)
+	CreateListing(ctx context.Context, in *CreateListingRequest, opts ...grpc.CallOption) (*CreateListingResponse, error)
+	UpdateListing(ctx context.Context, in *UpdateListingRequest, opts ...grpc.CallOption) (*UpdateListingResponse, error)
+	DeleteListing(ctx context.Context, in *DeleteListingRequest, opts ...grpc.CallOption) (*DeleteListingResponse, error)
 	AddToFavorites(ctx context.Context, in *AddToFavoritesRequest, opts ...grpc.CallOption) (*AddToFavoritesResponse, error)
 }
 
@@ -43,30 +49,60 @@ func NewFeedServiceClient(cc grpc.ClientConnInterface) FeedServiceClient {
 	return &feedServiceClient{cc}
 }
 
-func (c *feedServiceClient) ListFeed(ctx context.Context, in *ListFeedRequest, opts ...grpc.CallOption) (*ListFeedResponse, error) {
+func (c *feedServiceClient) ListListings(ctx context.Context, in *ListListingsRequest, opts ...grpc.CallOption) (*ListListingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListFeedResponse)
-	err := c.cc.Invoke(ctx, FeedService_ListFeed_FullMethodName, in, out, cOpts...)
+	out := new(ListListingsResponse)
+	err := c.cc.Invoke(ctx, FeedService_ListListings_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *feedServiceClient) SearchListing(ctx context.Context, in *SearchListingRequest, opts ...grpc.CallOption) (*SearchListingResponse, error) {
+func (c *feedServiceClient) GetListing(ctx context.Context, in *GetListingRequest, opts ...grpc.CallOption) (*GetListingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SearchListingResponse)
-	err := c.cc.Invoke(ctx, FeedService_SearchListing_FullMethodName, in, out, cOpts...)
+	out := new(GetListingResponse)
+	err := c.cc.Invoke(ctx, FeedService_GetListing_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *feedServiceClient) GetListingDetails(ctx context.Context, in *GetListingDetailsRequest, opts ...grpc.CallOption) (*GetListingDetailsResponse, error) {
+func (c *feedServiceClient) SearchListings(ctx context.Context, in *SearchListingsRequest, opts ...grpc.CallOption) (*SearchListingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetListingDetailsResponse)
-	err := c.cc.Invoke(ctx, FeedService_GetListingDetails_FullMethodName, in, out, cOpts...)
+	out := new(SearchListingsResponse)
+	err := c.cc.Invoke(ctx, FeedService_SearchListings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *feedServiceClient) CreateListing(ctx context.Context, in *CreateListingRequest, opts ...grpc.CallOption) (*CreateListingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateListingResponse)
+	err := c.cc.Invoke(ctx, FeedService_CreateListing_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *feedServiceClient) UpdateListing(ctx context.Context, in *UpdateListingRequest, opts ...grpc.CallOption) (*UpdateListingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateListingResponse)
+	err := c.cc.Invoke(ctx, FeedService_UpdateListing_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *feedServiceClient) DeleteListing(ctx context.Context, in *DeleteListingRequest, opts ...grpc.CallOption) (*DeleteListingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteListingResponse)
+	err := c.cc.Invoke(ctx, FeedService_DeleteListing_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,9 +123,12 @@ func (c *feedServiceClient) AddToFavorites(ctx context.Context, in *AddToFavorit
 // All implementations must embed UnimplementedFeedServiceServer
 // for forward compatibility.
 type FeedServiceServer interface {
-	ListFeed(context.Context, *ListFeedRequest) (*ListFeedResponse, error)
-	SearchListing(context.Context, *SearchListingRequest) (*SearchListingResponse, error)
-	GetListingDetails(context.Context, *GetListingDetailsRequest) (*GetListingDetailsResponse, error)
+	ListListings(context.Context, *ListListingsRequest) (*ListListingsResponse, error)
+	GetListing(context.Context, *GetListingRequest) (*GetListingResponse, error)
+	SearchListings(context.Context, *SearchListingsRequest) (*SearchListingsResponse, error)
+	CreateListing(context.Context, *CreateListingRequest) (*CreateListingResponse, error)
+	UpdateListing(context.Context, *UpdateListingRequest) (*UpdateListingResponse, error)
+	DeleteListing(context.Context, *DeleteListingRequest) (*DeleteListingResponse, error)
 	AddToFavorites(context.Context, *AddToFavoritesRequest) (*AddToFavoritesResponse, error)
 	mustEmbedUnimplementedFeedServiceServer()
 }
@@ -101,14 +140,23 @@ type FeedServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedFeedServiceServer struct{}
 
-func (UnimplementedFeedServiceServer) ListFeed(context.Context, *ListFeedRequest) (*ListFeedResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListFeed not implemented")
+func (UnimplementedFeedServiceServer) ListListings(context.Context, *ListListingsRequest) (*ListListingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListListings not implemented")
 }
-func (UnimplementedFeedServiceServer) SearchListing(context.Context, *SearchListingRequest) (*SearchListingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchListing not implemented")
+func (UnimplementedFeedServiceServer) GetListing(context.Context, *GetListingRequest) (*GetListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetListing not implemented")
 }
-func (UnimplementedFeedServiceServer) GetListingDetails(context.Context, *GetListingDetailsRequest) (*GetListingDetailsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetListingDetails not implemented")
+func (UnimplementedFeedServiceServer) SearchListings(context.Context, *SearchListingsRequest) (*SearchListingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchListings not implemented")
+}
+func (UnimplementedFeedServiceServer) CreateListing(context.Context, *CreateListingRequest) (*CreateListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateListing not implemented")
+}
+func (UnimplementedFeedServiceServer) UpdateListing(context.Context, *UpdateListingRequest) (*UpdateListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateListing not implemented")
+}
+func (UnimplementedFeedServiceServer) DeleteListing(context.Context, *DeleteListingRequest) (*DeleteListingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteListing not implemented")
 }
 func (UnimplementedFeedServiceServer) AddToFavorites(context.Context, *AddToFavoritesRequest) (*AddToFavoritesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddToFavorites not implemented")
@@ -134,56 +182,110 @@ func RegisterFeedServiceServer(s grpc.ServiceRegistrar, srv FeedServiceServer) {
 	s.RegisterService(&FeedService_ServiceDesc, srv)
 }
 
-func _FeedService_ListFeed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListFeedRequest)
+func _FeedService_ListListings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListListingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FeedServiceServer).ListFeed(ctx, in)
+		return srv.(FeedServiceServer).ListListings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FeedService_ListFeed_FullMethodName,
+		FullMethod: FeedService_ListListings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FeedServiceServer).ListFeed(ctx, req.(*ListFeedRequest))
+		return srv.(FeedServiceServer).ListListings(ctx, req.(*ListListingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FeedService_SearchListing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchListingRequest)
+func _FeedService_GetListing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetListingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FeedServiceServer).SearchListing(ctx, in)
+		return srv.(FeedServiceServer).GetListing(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FeedService_SearchListing_FullMethodName,
+		FullMethod: FeedService_GetListing_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FeedServiceServer).SearchListing(ctx, req.(*SearchListingRequest))
+		return srv.(FeedServiceServer).GetListing(ctx, req.(*GetListingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FeedService_GetListingDetails_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetListingDetailsRequest)
+func _FeedService_SearchListings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchListingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FeedServiceServer).GetListingDetails(ctx, in)
+		return srv.(FeedServiceServer).SearchListings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FeedService_GetListingDetails_FullMethodName,
+		FullMethod: FeedService_SearchListings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FeedServiceServer).GetListingDetails(ctx, req.(*GetListingDetailsRequest))
+		return srv.(FeedServiceServer).SearchListings(ctx, req.(*SearchListingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeedService_CreateListing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateListingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeedServiceServer).CreateListing(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeedService_CreateListing_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeedServiceServer).CreateListing(ctx, req.(*CreateListingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeedService_UpdateListing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateListingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeedServiceServer).UpdateListing(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeedService_UpdateListing_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeedServiceServer).UpdateListing(ctx, req.(*UpdateListingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeedService_DeleteListing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteListingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeedServiceServer).DeleteListing(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeedService_DeleteListing_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeedServiceServer).DeleteListing(ctx, req.(*DeleteListingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -214,16 +316,28 @@ var FeedService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FeedServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListFeed",
-			Handler:    _FeedService_ListFeed_Handler,
+			MethodName: "ListListings",
+			Handler:    _FeedService_ListListings_Handler,
 		},
 		{
-			MethodName: "SearchListing",
-			Handler:    _FeedService_SearchListing_Handler,
+			MethodName: "GetListing",
+			Handler:    _FeedService_GetListing_Handler,
 		},
 		{
-			MethodName: "GetListingDetails",
-			Handler:    _FeedService_GetListingDetails_Handler,
+			MethodName: "SearchListings",
+			Handler:    _FeedService_SearchListings_Handler,
+		},
+		{
+			MethodName: "CreateListing",
+			Handler:    _FeedService_CreateListing_Handler,
+		},
+		{
+			MethodName: "UpdateListing",
+			Handler:    _FeedService_UpdateListing_Handler,
+		},
+		{
+			MethodName: "DeleteListing",
+			Handler:    _FeedService_DeleteListing_Handler,
 		},
 		{
 			MethodName: "AddToFavorites",
