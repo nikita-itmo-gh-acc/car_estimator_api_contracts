@@ -1264,7 +1264,7 @@ const file_feed_proto_rawDesc = "" +
 	"\rCreateListing\x12\x1a.feed.CreateListingRequest\x1a\x1b.feed.CreateListingResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\alisting\"\f/v1/listings\x12|\n" +
 	"\rUpdateListing\x12\x1a.feed.UpdateListingRequest\x1a\x1b.feed.UpdateListingResponse\"2\x82\xd3\xe4\x93\x02,:\alisting\x1a!/v1/listings/{listing.listing_id}\x12k\n" +
 	"\rDeleteListing\x12\x1a.feed.DeleteListingRequest\x1a\x1b.feed.DeleteListingResponse\"!\x82\xd3\xe4\x93\x02\x1b*\x19/v1/listings/{listing_id}\x12u\n" +
-	"\x0eAddToFavorites\x12\x1b.feed.AddToFavoritesRequest\x1a\x1c.feed.AddToFavoritesResponse\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/v1/users/{user_id}/favoritesB\tZ\afeed.v1b\x06proto3"
+	"\x0eAddToFavorites\x12\x1b.feed.AddToFavoritesRequest\x1a\x1c.feed.AddToFavoritesResponse\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/v1/users/{user_id}/favoritesBOZMgithub.com/nikita-itmo-gh-acc/car_estimator_api_contracts/gen/feed_v1;feed_v1b\x06proto3"
 
 var (
 	file_feed_proto_rawDescOnce sync.Once

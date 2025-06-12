@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package feed;
 
-option go_package = "feed.v1";
+option go_package = "github.com/nikita-itmo-gh-acc/car_estimator_api_contracts/gen/feed_v1;feed_v1";
 
 import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
