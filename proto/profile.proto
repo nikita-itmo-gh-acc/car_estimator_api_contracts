@@ -1,12 +1,16 @@
 syntax = "proto3";
 
-package auth;
+package profile;
 
-option go_package = "auth.v1";
+import "google/protobuf/empty.proto";
 
-service AuthService {
-    rpc Login(LoginRequest) returns (TokenResponse) {};
+option go_package = "profile.v1";
+
+service ProfileService {
     rpc Register(RegisterRequest) returns (RegisterResponse) {};
+    rpc Unregister(UnregiserRequest) returns (google.protobuf.Empty) {};
+    rpc Login(LoginRequest) returns (TokenResponse) {};
+    rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {};
     rpc Refresh(RefreshRequest) returns (TokenResponse) {};
 }
 
@@ -33,6 +37,10 @@ message RegisterRequest {
     string email = 2; 
     string password = 3;
     int64 birthdate = 4; 
+}
+
+message UnregiserRequest {
+    UUID userId = 1;
 }
 
 message RefreshRequest {
