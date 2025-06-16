@@ -35,7 +35,7 @@ type ProfileServiceClient interface {
 	Unregister(ctx context.Context, in *UnregiserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*TokenResponse, error)
+	Refresh(ctx context.Context, in *SourceData, opts ...grpc.CallOption) (*TokenResponse, error)
 }
 
 type profileServiceClient struct {
@@ -86,7 +86,7 @@ func (c *profileServiceClient) Logout(ctx context.Context, in *emptypb.Empty, op
 	return out, nil
 }
 
-func (c *profileServiceClient) Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
+func (c *profileServiceClient) Refresh(ctx context.Context, in *SourceData, opts ...grpc.CallOption) (*TokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(TokenResponse)
 	err := c.cc.Invoke(ctx, ProfileService_Refresh_FullMethodName, in, out, cOpts...)
@@ -104,7 +104,7 @@ type ProfileServiceServer interface {
 	Unregister(context.Context, *UnregiserRequest) (*emptypb.Empty, error)
 	Login(context.Context, *LoginRequest) (*TokenResponse, error)
 	Logout(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
-	Refresh(context.Context, *RefreshRequest) (*TokenResponse, error)
+	Refresh(context.Context, *SourceData) (*TokenResponse, error)
 	mustEmbedUnimplementedProfileServiceServer()
 }
 
@@ -127,7 +127,7 @@ func (UnimplementedProfileServiceServer) Login(context.Context, *LoginRequest) (
 func (UnimplementedProfileServiceServer) Logout(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
-func (UnimplementedProfileServiceServer) Refresh(context.Context, *RefreshRequest) (*TokenResponse, error) {
+func (UnimplementedProfileServiceServer) Refresh(context.Context, *SourceData) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Refresh not implemented")
 }
 func (UnimplementedProfileServiceServer) mustEmbedUnimplementedProfileServiceServer() {}
@@ -224,7 +224,7 @@ func _ProfileService_Logout_Handler(srv interface{}, ctx context.Context, dec fu
 }
 
 func _ProfileService_Refresh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RefreshRequest)
+	in := new(SourceData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -236,7 +236,7 @@ func _ProfileService_Refresh_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: ProfileService_Refresh_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProfileServiceServer).Refresh(ctx, req.(*RefreshRequest))
+		return srv.(ProfileServiceServer).Refresh(ctx, req.(*SourceData))
 	}
 	return interceptor(ctx, in, info, handler)
 }

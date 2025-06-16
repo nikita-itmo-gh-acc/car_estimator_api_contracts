@@ -11,21 +11,27 @@ service ProfileService {
     rpc Unregister(UnregiserRequest) returns (google.protobuf.Empty) {};
     rpc Login(LoginRequest) returns (TokenResponse) {};
     rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {};
-    rpc Refresh(RefreshRequest) returns (TokenResponse) {};
+    rpc Refresh(SourceData) returns (TokenResponse) {};
 }
 
 message UUID {
     string value = 1;
 }
 
+message SourceData {
+    string ip = 1;
+    string userAgent = 2;
+}
+
 message TokenResponse {
     string accessToken = 1;
-    int64 expiresIn = 2;
+    string refreshToken = 2;
 }
 
 message LoginRequest {
     string email = 1; 
     string password = 2;
+    SourceData source = 3;
 }
 
 message RegisterResponse {
@@ -43,7 +49,3 @@ message UnregiserRequest {
     UUID userId = 1;
 }
 
-message RefreshRequest {
-    string ip = 1;
-    string userAgent = 2;
-}
