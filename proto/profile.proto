@@ -46,8 +46,9 @@ message RegisterResponse {
 message RegisterRequest {
     string fullname = 1;
     string email = 2; 
-    string password = 3;
-    int64 birthdate = 4; 
+    string phone = 3;
+    string password = 4;
+    int64 birthdate = 5; 
 }
 
 message UserRequest {
@@ -58,6 +59,7 @@ message UserResponse {
     UUID userId = 1;
     string fullname = 2;
     string email = 3; 
-    int64 birthdate = 4;
-    int64 registerdate = 5;
+    string phone = 4;
+    int64 birthdate = 5;
+    int64 registerdate = 6;
 }

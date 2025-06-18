@@ -322,8 +322,9 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Fullname      string                 `protobuf:"bytes,1,opt,name=fullname,proto3" json:"fullname,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
-	Birthdate     int64                  `protobuf:"varint,4,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
+	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
+	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	Birthdate     int64                  `protobuf:"varint,5,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -368,6 +369,13 @@ func (x *RegisterRequest) GetFullname() string {
 func (x *RegisterRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetPhone() string {
+	if x != nil {
+		return x.Phone
 	}
 	return ""
 }
@@ -435,8 +443,9 @@ type UserResponse struct {
 	UserId        *UUID                  `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	Fullname      string                 `protobuf:"bytes,2,opt,name=fullname,proto3" json:"fullname,omitempty"`
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Birthdate     int64                  `protobuf:"varint,4,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
-	Registerdate  int64                  `protobuf:"varint,5,opt,name=registerdate,proto3" json:"registerdate,omitempty"`
+	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
+	Birthdate     int64                  `protobuf:"varint,5,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
+	Registerdate  int64                  `protobuf:"varint,6,opt,name=registerdate,proto3" json:"registerdate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -492,6 +501,13 @@ func (x *UserResponse) GetEmail() string {
 	return ""
 }
 
+func (x *UserResponse) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
 func (x *UserResponse) GetBirthdate() int64 {
 	if x != nil {
 		return x.Birthdate
@@ -527,20 +543,22 @@ const file_profile_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12+\n" +
 	"\x06source\x18\x03 \x01(\v2\x13.profile.SourceDataR\x06source\"9\n" +
 	"\x10RegisterResponse\x12%\n" +
-	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"}\n" +
+	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"\x93\x01\n" +
 	"\x0fRegisterRequest\x12\x1a\n" +
 	"\bfullname\x18\x01 \x01(\tR\bfullname\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1c\n" +
-	"\tbirthdate\x18\x04 \x01(\x03R\tbirthdate\"4\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12\x1c\n" +
+	"\tbirthdate\x18\x05 \x01(\x03R\tbirthdate\"4\n" +
 	"\vUserRequest\x12%\n" +
-	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"\xa9\x01\n" +
+	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"\xbf\x01\n" +
 	"\fUserResponse\x12%\n" +
 	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\x12\x1a\n" +
 	"\bfullname\x18\x02 \x01(\tR\bfullname\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1c\n" +
-	"\tbirthdate\x18\x04 \x01(\x03R\tbirthdate\x12\"\n" +
-	"\fregisterdate\x18\x05 \x01(\x03R\fregisterdate2\xfd\x02\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x1c\n" +
+	"\tbirthdate\x18\x05 \x01(\x03R\tbirthdate\x12\"\n" +
+	"\fregisterdate\x18\x06 \x01(\x03R\fregisterdate2\xfd\x02\n" +
 	"\x0eProfileService\x12A\n" +
 	"\bRegister\x12\x18.profile.RegisterRequest\x1a\x19.profile.RegisterResponse\"\x00\x12>\n" +
 	"\n" +
