@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package car_estimator.predict;
 
+option go_package = "prediction.v1";
+
 service PredictionService {
   rpc Predict (PredictRequest) returns (PredictResponse);
 }
