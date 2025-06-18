@@ -22,6 +22,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	ProfileService_Register_FullMethodName   = "/profile.ProfileService/Register"
 	ProfileService_Unregister_FullMethodName = "/profile.ProfileService/Unregister"
+	ProfileService_GetUser_FullMethodName    = "/profile.ProfileService/GetUser"
 	ProfileService_Login_FullMethodName      = "/profile.ProfileService/Login"
 	ProfileService_Logout_FullMethodName     = "/profile.ProfileService/Logout"
 	ProfileService_Refresh_FullMethodName    = "/profile.ProfileService/Refresh"
@@ -32,7 +33,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProfileServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
-	Unregister(ctx context.Context, in *UnregiserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Unregister(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Refresh(ctx context.Context, in *SourceData, opts ...grpc.CallOption) (*TokenResponse, error)
@@ -56,10 +58,20 @@ func (c *profileServiceClient) Register(ctx context.Context, in *RegisterRequest
 	return out, nil
 }
 
-func (c *profileServiceClient) Unregister(ctx context.Context, in *UnregiserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *profileServiceClient) Unregister(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, ProfileService_Unregister_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *profileServiceClient) GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserResponse)
+	err := c.cc.Invoke(ctx, ProfileService_GetUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,7 +113,8 @@ func (c *profileServiceClient) Refresh(ctx context.Context, in *SourceData, opts
 // for forward compatibility.
 type ProfileServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
-	Unregister(context.Context, *UnregiserRequest) (*emptypb.Empty, error)
+	Unregister(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
+	GetUser(context.Context, *UserRequest) (*UserResponse, error)
 	Login(context.Context, *LoginRequest) (*TokenResponse, error)
 	Logout(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 	Refresh(context.Context, *SourceData) (*TokenResponse, error)
@@ -118,8 +131,11 @@ type UnimplementedProfileServiceServer struct{}
 func (UnimplementedProfileServiceServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedProfileServiceServer) Unregister(context.Context, *UnregiserRequest) (*emptypb.Empty, error) {
+func (UnimplementedProfileServiceServer) Unregister(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Unregister not implemented")
+}
+func (UnimplementedProfileServiceServer) GetUser(context.Context, *UserRequest) (*UserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
 func (UnimplementedProfileServiceServer) Login(context.Context, *LoginRequest) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
@@ -170,7 +186,7 @@ func _ProfileService_Register_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 func _ProfileService_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregiserRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -182,7 +198,25 @@ func _ProfileService_Unregister_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: ProfileService_Unregister_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProfileServiceServer).Unregister(ctx, req.(*UnregiserRequest))
+		return srv.(ProfileServiceServer).Unregister(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProfileService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProfileServiceServer).GetUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProfileService_GetUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProfileServiceServer).GetUser(ctx, req.(*UserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -255,6 +289,10 @@ var ProfileService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Unregister",
 			Handler:    _ProfileService_Unregister_Handler,
+		},
+		{
+			MethodName: "GetUser",
+			Handler:    _ProfileService_GetUser_Handler,
 		},
 		{
 			MethodName: "Login",

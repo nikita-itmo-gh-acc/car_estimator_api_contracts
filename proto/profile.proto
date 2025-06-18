@@ -8,7 +8,8 @@ option go_package = "profile.v1";
 
 service ProfileService {
     rpc Register(RegisterRequest) returns (RegisterResponse) {};
-    rpc Unregister(UnregiserRequest) returns (google.protobuf.Empty) {};
+    rpc Unregister(google.protobuf.Empty) returns (google.protobuf.Empty) {};
+    rpc GetUser(UserRequest) returns (UserResponse) {};
     rpc Login(LoginRequest) returns (TokenResponse) {};
     rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {};
     rpc Refresh(SourceData) returns (TokenResponse) {};
@@ -21,6 +22,10 @@ message UUID {
 message SourceData {
     string ip = 1;
     string userAgent = 2;
+}
+
+message RegiserRequest {
+    UUID userId = 1;
 }
 
 message TokenResponse {
@@ -45,7 +50,14 @@ message RegisterRequest {
     int64 birthdate = 4; 
 }
 
-message UnregiserRequest {
+message UserRequest {
     UUID userId = 1;
 }
 
+message UserResponse {
+    UUID userId = 1;
+    string fullname = 2;
+    string email = 3; 
+    int64 birthdate = 4;
+    int64 registerdate = 5;
+}

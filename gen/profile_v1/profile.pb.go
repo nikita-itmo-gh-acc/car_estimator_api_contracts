@@ -118,6 +118,50 @@ func (x *SourceData) GetUserAgent() string {
 	return ""
 }
 
+type RegiserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegiserRequest) Reset() {
+	*x = RegiserRequest{}
+	mi := &file_profile_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegiserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegiserRequest) ProtoMessage() {}
+
+func (x *RegiserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_profile_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegiserRequest.ProtoReflect.Descriptor instead.
+func (*RegiserRequest) Descriptor() ([]byte, []int) {
+	return file_profile_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RegiserRequest) GetUserId() *UUID {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
 type TokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccessToken   string                 `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
@@ -128,7 +172,7 @@ type TokenResponse struct {
 
 func (x *TokenResponse) Reset() {
 	*x = TokenResponse{}
-	mi := &file_profile_proto_msgTypes[2]
+	mi := &file_profile_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +184,7 @@ func (x *TokenResponse) String() string {
 func (*TokenResponse) ProtoMessage() {}
 
 func (x *TokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_profile_proto_msgTypes[2]
+	mi := &file_profile_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +197,7 @@ func (x *TokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TokenResponse.ProtoReflect.Descriptor instead.
 func (*TokenResponse) Descriptor() ([]byte, []int) {
-	return file_profile_proto_rawDescGZIP(), []int{2}
+	return file_profile_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TokenResponse) GetAccessToken() string {
@@ -181,7 +225,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_profile_proto_msgTypes[3]
+	mi := &file_profile_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -193,7 +237,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_profile_proto_msgTypes[3]
+	mi := &file_profile_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -206,7 +250,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_profile_proto_rawDescGZIP(), []int{3}
+	return file_profile_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -239,7 +283,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_profile_proto_msgTypes[4]
+	mi := &file_profile_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -251,7 +295,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_profile_proto_msgTypes[4]
+	mi := &file_profile_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -264,7 +308,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_profile_proto_rawDescGZIP(), []int{4}
+	return file_profile_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RegisterResponse) GetUserId() *UUID {
@@ -286,7 +330,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_profile_proto_msgTypes[5]
+	mi := &file_profile_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -298,7 +342,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_profile_proto_msgTypes[5]
+	mi := &file_profile_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,7 +355,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_profile_proto_rawDescGZIP(), []int{5}
+	return file_profile_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RegisterRequest) GetFullname() string {
@@ -342,28 +386,28 @@ func (x *RegisterRequest) GetBirthdate() int64 {
 	return 0
 }
 
-type UnregiserRequest struct {
+type UserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        *UUID                  `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UnregiserRequest) Reset() {
-	*x = UnregiserRequest{}
-	mi := &file_profile_proto_msgTypes[6]
+func (x *UserRequest) Reset() {
+	*x = UserRequest{}
+	mi := &file_profile_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UnregiserRequest) String() string {
+func (x *UserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UnregiserRequest) ProtoMessage() {}
+func (*UserRequest) ProtoMessage() {}
 
-func (x *UnregiserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_profile_proto_msgTypes[6]
+func (x *UserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_profile_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -374,16 +418,92 @@ func (x *UnregiserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UnregiserRequest.ProtoReflect.Descriptor instead.
-func (*UnregiserRequest) Descriptor() ([]byte, []int) {
-	return file_profile_proto_rawDescGZIP(), []int{6}
+// Deprecated: Use UserRequest.ProtoReflect.Descriptor instead.
+func (*UserRequest) Descriptor() ([]byte, []int) {
+	return file_profile_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UnregiserRequest) GetUserId() *UUID {
+func (x *UserRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
 	return nil
+}
+
+type UserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	Fullname      string                 `protobuf:"bytes,2,opt,name=fullname,proto3" json:"fullname,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Birthdate     int64                  `protobuf:"varint,4,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
+	Registerdate  int64                  `protobuf:"varint,5,opt,name=registerdate,proto3" json:"registerdate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserResponse) Reset() {
+	*x = UserResponse{}
+	mi := &file_profile_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserResponse) ProtoMessage() {}
+
+func (x *UserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_profile_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
+func (*UserResponse) Descriptor() ([]byte, []int) {
+	return file_profile_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UserResponse) GetUserId() *UUID {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
+func (x *UserResponse) GetFullname() string {
+	if x != nil {
+		return x.Fullname
+	}
+	return ""
+}
+
+func (x *UserResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *UserResponse) GetBirthdate() int64 {
+	if x != nil {
+		return x.Birthdate
+	}
+	return 0
+}
+
+func (x *UserResponse) GetRegisterdate() int64 {
+	if x != nil {
+		return x.Registerdate
+	}
+	return 0
 }
 
 var File_profile_proto protoreflect.FileDescriptor
@@ -396,7 +516,9 @@ const file_profile_proto_rawDesc = "" +
 	"\n" +
 	"SourceData\x12\x0e\n" +
 	"\x02ip\x18\x01 \x01(\tR\x02ip\x12\x1c\n" +
-	"\tuserAgent\x18\x02 \x01(\tR\tuserAgent\"U\n" +
+	"\tuserAgent\x18\x02 \x01(\tR\tuserAgent\"7\n" +
+	"\x0eRegiserRequest\x12%\n" +
+	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"U\n" +
 	"\rTokenResponse\x12 \n" +
 	"\vaccessToken\x18\x01 \x01(\tR\vaccessToken\x12\"\n" +
 	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken\"m\n" +
@@ -410,13 +532,20 @@ const file_profile_proto_rawDesc = "" +
 	"\bfullname\x18\x01 \x01(\tR\bfullname\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1c\n" +
-	"\tbirthdate\x18\x04 \x01(\x03R\tbirthdate\"9\n" +
-	"\x10UnregiserRequest\x12%\n" +
-	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId2\xc6\x02\n" +
+	"\tbirthdate\x18\x04 \x01(\x03R\tbirthdate\"4\n" +
+	"\vUserRequest\x12%\n" +
+	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\"\xa9\x01\n" +
+	"\fUserResponse\x12%\n" +
+	"\x06userId\x18\x01 \x01(\v2\r.profile.UUIDR\x06userId\x12\x1a\n" +
+	"\bfullname\x18\x02 \x01(\tR\bfullname\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1c\n" +
+	"\tbirthdate\x18\x04 \x01(\x03R\tbirthdate\x12\"\n" +
+	"\fregisterdate\x18\x05 \x01(\x03R\fregisterdate2\xfd\x02\n" +
 	"\x0eProfileService\x12A\n" +
-	"\bRegister\x12\x18.profile.RegisterRequest\x1a\x19.profile.RegisterResponse\"\x00\x12A\n" +
+	"\bRegister\x12\x18.profile.RegisterRequest\x1a\x19.profile.RegisterResponse\"\x00\x12>\n" +
 	"\n" +
-	"Unregister\x12\x19.profile.UnregiserRequest\x1a\x16.google.protobuf.Empty\"\x00\x128\n" +
+	"Unregister\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.Empty\"\x00\x128\n" +
+	"\aGetUser\x12\x14.profile.UserRequest\x1a\x15.profile.UserResponse\"\x00\x128\n" +
 	"\x05Login\x12\x15.profile.LoginRequest\x1a\x16.profile.TokenResponse\"\x00\x12:\n" +
 	"\x06Logout\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.Empty\"\x00\x128\n" +
 	"\aRefresh\x12\x13.profile.SourceData\x1a\x16.profile.TokenResponse\"\x00B\fZ\n" +
@@ -434,36 +563,42 @@ func file_profile_proto_rawDescGZIP() []byte {
 	return file_profile_proto_rawDescData
 }
 
-var file_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_profile_proto_goTypes = []any{
 	(*UUID)(nil),             // 0: profile.UUID
 	(*SourceData)(nil),       // 1: profile.SourceData
-	(*TokenResponse)(nil),    // 2: profile.TokenResponse
-	(*LoginRequest)(nil),     // 3: profile.LoginRequest
-	(*RegisterResponse)(nil), // 4: profile.RegisterResponse
-	(*RegisterRequest)(nil),  // 5: profile.RegisterRequest
-	(*UnregiserRequest)(nil), // 6: profile.UnregiserRequest
-	(*emptypb.Empty)(nil),    // 7: google.protobuf.Empty
+	(*RegiserRequest)(nil),   // 2: profile.RegiserRequest
+	(*TokenResponse)(nil),    // 3: profile.TokenResponse
+	(*LoginRequest)(nil),     // 4: profile.LoginRequest
+	(*RegisterResponse)(nil), // 5: profile.RegisterResponse
+	(*RegisterRequest)(nil),  // 6: profile.RegisterRequest
+	(*UserRequest)(nil),      // 7: profile.UserRequest
+	(*UserResponse)(nil),     // 8: profile.UserResponse
+	(*emptypb.Empty)(nil),    // 9: google.protobuf.Empty
 }
 var file_profile_proto_depIdxs = []int32{
-	1, // 0: profile.LoginRequest.source:type_name -> profile.SourceData
-	0, // 1: profile.RegisterResponse.userId:type_name -> profile.UUID
-	0, // 2: profile.UnregiserRequest.userId:type_name -> profile.UUID
-	5, // 3: profile.ProfileService.Register:input_type -> profile.RegisterRequest
-	6, // 4: profile.ProfileService.Unregister:input_type -> profile.UnregiserRequest
-	3, // 5: profile.ProfileService.Login:input_type -> profile.LoginRequest
-	7, // 6: profile.ProfileService.Logout:input_type -> google.protobuf.Empty
-	1, // 7: profile.ProfileService.Refresh:input_type -> profile.SourceData
-	4, // 8: profile.ProfileService.Register:output_type -> profile.RegisterResponse
-	7, // 9: profile.ProfileService.Unregister:output_type -> google.protobuf.Empty
-	2, // 10: profile.ProfileService.Login:output_type -> profile.TokenResponse
-	7, // 11: profile.ProfileService.Logout:output_type -> google.protobuf.Empty
-	2, // 12: profile.ProfileService.Refresh:output_type -> profile.TokenResponse
-	8, // [8:13] is the sub-list for method output_type
-	3, // [3:8] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0,  // 0: profile.RegiserRequest.userId:type_name -> profile.UUID
+	1,  // 1: profile.LoginRequest.source:type_name -> profile.SourceData
+	0,  // 2: profile.RegisterResponse.userId:type_name -> profile.UUID
+	0,  // 3: profile.UserRequest.userId:type_name -> profile.UUID
+	0,  // 4: profile.UserResponse.userId:type_name -> profile.UUID
+	6,  // 5: profile.ProfileService.Register:input_type -> profile.RegisterRequest
+	9,  // 6: profile.ProfileService.Unregister:input_type -> google.protobuf.Empty
+	7,  // 7: profile.ProfileService.GetUser:input_type -> profile.UserRequest
+	4,  // 8: profile.ProfileService.Login:input_type -> profile.LoginRequest
+	9,  // 9: profile.ProfileService.Logout:input_type -> google.protobuf.Empty
+	1,  // 10: profile.ProfileService.Refresh:input_type -> profile.SourceData
+	5,  // 11: profile.ProfileService.Register:output_type -> profile.RegisterResponse
+	9,  // 12: profile.ProfileService.Unregister:output_type -> google.protobuf.Empty
+	8,  // 13: profile.ProfileService.GetUser:output_type -> profile.UserResponse
+	3,  // 14: profile.ProfileService.Login:output_type -> profile.TokenResponse
+	9,  // 15: profile.ProfileService.Logout:output_type -> google.protobuf.Empty
+	3,  // 16: profile.ProfileService.Refresh:output_type -> profile.TokenResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_profile_proto_init() }
@@ -477,7 +612,7 @@ func file_profile_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_profile_proto_rawDesc), len(file_profile_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
