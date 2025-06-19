@@ -35,7 +35,7 @@ type ProfileServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Unregister(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetUser(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
-	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	Refresh(ctx context.Context, in *SourceData, opts ...grpc.CallOption) (*TokenResponse, error)
 }
@@ -78,9 +78,9 @@ func (c *profileServiceClient) GetUser(ctx context.Context, in *UserRequest, opt
 	return out, nil
 }
 
-func (c *profileServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
+func (c *profileServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(TokenResponse)
+	out := new(LoginResponse)
 	err := c.cc.Invoke(ctx, ProfileService_Login_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -115,7 +115,7 @@ type ProfileServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Unregister(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 	GetUser(context.Context, *UserRequest) (*UserResponse, error)
-	Login(context.Context, *LoginRequest) (*TokenResponse, error)
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 	Refresh(context.Context, *SourceData) (*TokenResponse, error)
 	mustEmbedUnimplementedProfileServiceServer()
@@ -137,7 +137,7 @@ func (UnimplementedProfileServiceServer) Unregister(context.Context, *emptypb.Em
 func (UnimplementedProfileServiceServer) GetUser(context.Context, *UserRequest) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
-func (UnimplementedProfileServiceServer) Login(context.Context, *LoginRequest) (*TokenResponse, error) {
+func (UnimplementedProfileServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
 func (UnimplementedProfileServiceServer) Logout(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
