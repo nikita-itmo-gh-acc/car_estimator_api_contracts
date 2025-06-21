@@ -39,12 +39,23 @@ class PredictionServiceStub(object):
                 request_serializer=prediction__pb2.PredictRequest.SerializeToString,
                 response_deserializer=prediction__pb2.PredictResponse.FromString,
                 _registered_method=True)
+        self.GetImages = channel.unary_unary(
+                '/car_estimator.predict.PredictionService/GetImages',
+                request_serializer=prediction__pb2.ImagesRequest.SerializeToString,
+                response_deserializer=prediction__pb2.ImagesResponse.FromString,
+                _registered_method=True)
 
 
 class PredictionServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def Predict(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetImages(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -57,6 +68,11 @@ def add_PredictionServiceServicer_to_server(servicer, server):
                     servicer.Predict,
                     request_deserializer=prediction__pb2.PredictRequest.FromString,
                     response_serializer=prediction__pb2.PredictResponse.SerializeToString,
+            ),
+            'GetImages': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetImages,
+                    request_deserializer=prediction__pb2.ImagesRequest.FromString,
+                    response_serializer=prediction__pb2.ImagesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -86,6 +102,33 @@ class PredictionService(object):
             '/car_estimator.predict.PredictionService/Predict',
             prediction__pb2.PredictRequest.SerializeToString,
             prediction__pb2.PredictResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetImages(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/car_estimator.predict.PredictionService/GetImages',
+            prediction__pb2.ImagesRequest.SerializeToString,
+            prediction__pb2.ImagesResponse.FromString,
             options,
             channel_credentials,
             insecure,

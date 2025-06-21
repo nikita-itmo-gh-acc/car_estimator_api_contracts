@@ -189,6 +189,110 @@ func (x *PredictResponse) GetGraphPng() []byte {
 	return nil
 }
 
+type ImagesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Make          string                 `protobuf:"bytes,1,opt,name=make,proto3" json:"make,omitempty"`
+	Model         string                 `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
+	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImagesRequest) Reset() {
+	*x = ImagesRequest{}
+	mi := &file_prediction_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImagesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImagesRequest) ProtoMessage() {}
+
+func (x *ImagesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_prediction_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImagesRequest.ProtoReflect.Descriptor instead.
+func (*ImagesRequest) Descriptor() ([]byte, []int) {
+	return file_prediction_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ImagesRequest) GetMake() string {
+	if x != nil {
+		return x.Make
+	}
+	return ""
+}
+
+func (x *ImagesRequest) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *ImagesRequest) GetYear() int32 {
+	if x != nil {
+		return x.Year
+	}
+	return 0
+}
+
+type ImagesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PhotoUrls     []string               `protobuf:"bytes,2,rep,name=photo_urls,json=photoUrls,proto3" json:"photo_urls,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImagesResponse) Reset() {
+	*x = ImagesResponse{}
+	mi := &file_prediction_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImagesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImagesResponse) ProtoMessage() {}
+
+func (x *ImagesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_prediction_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImagesResponse.ProtoReflect.Descriptor instead.
+func (*ImagesResponse) Descriptor() ([]byte, []int) {
+	return file_prediction_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ImagesResponse) GetPhotoUrls() []string {
+	if x != nil {
+		return x.PhotoUrls
+	}
+	return nil
+}
+
 var File_prediction_proto protoreflect.FileDescriptor
 
 const file_prediction_proto_rawDesc = "" +
@@ -209,9 +313,17 @@ const file_prediction_proto_rawDesc = "" +
 	"photo_urls\x18\x02 \x03(\tR\tphotoUrls\x12\x1d\n" +
 	"\n" +
 	"sell_count\x18\x03 \x01(\x05R\tsellCount\x12\x1b\n" +
-	"\tgraph_png\x18\x04 \x01(\fR\bgraphPng2m\n" +
+	"\tgraph_png\x18\x04 \x01(\fR\bgraphPng\"M\n" +
+	"\rImagesRequest\x12\x12\n" +
+	"\x04make\x18\x01 \x01(\tR\x04make\x12\x14\n" +
+	"\x05model\x18\x02 \x01(\tR\x05model\x12\x12\n" +
+	"\x04year\x18\x03 \x01(\x05R\x04year\"/\n" +
+	"\x0eImagesResponse\x12\x1d\n" +
+	"\n" +
+	"photo_urls\x18\x02 \x03(\tR\tphotoUrls2\xc7\x01\n" +
 	"\x11PredictionService\x12X\n" +
-	"\aPredict\x12%.car_estimator.predict.PredictRequest\x1a&.car_estimator.predict.PredictResponseB\x0fZ\rprediction.v1b\x06proto3"
+	"\aPredict\x12%.car_estimator.predict.PredictRequest\x1a&.car_estimator.predict.PredictResponse\x12X\n" +
+	"\tGetImages\x12$.car_estimator.predict.ImagesRequest\x1a%.car_estimator.predict.ImagesResponseB\x0fZ\rprediction.v1b\x06proto3"
 
 var (
 	file_prediction_proto_rawDescOnce sync.Once
@@ -225,16 +337,20 @@ func file_prediction_proto_rawDescGZIP() []byte {
 	return file_prediction_proto_rawDescData
 }
 
-var file_prediction_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_prediction_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_prediction_proto_goTypes = []any{
 	(*PredictRequest)(nil),  // 0: car_estimator.predict.PredictRequest
 	(*PredictResponse)(nil), // 1: car_estimator.predict.PredictResponse
+	(*ImagesRequest)(nil),   // 2: car_estimator.predict.ImagesRequest
+	(*ImagesResponse)(nil),  // 3: car_estimator.predict.ImagesResponse
 }
 var file_prediction_proto_depIdxs = []int32{
 	0, // 0: car_estimator.predict.PredictionService.Predict:input_type -> car_estimator.predict.PredictRequest
-	1, // 1: car_estimator.predict.PredictionService.Predict:output_type -> car_estimator.predict.PredictResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: car_estimator.predict.PredictionService.GetImages:input_type -> car_estimator.predict.ImagesRequest
+	1, // 2: car_estimator.predict.PredictionService.Predict:output_type -> car_estimator.predict.PredictResponse
+	3, // 3: car_estimator.predict.PredictionService.GetImages:output_type -> car_estimator.predict.ImagesResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -251,7 +367,7 @@ func file_prediction_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_prediction_proto_rawDesc), len(file_prediction_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
